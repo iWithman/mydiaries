@@ -20,7 +20,6 @@ const Notes = () => {
     ))
   ) : (
     <div>
-      None
       {allNotes.error}
     </div>
   )

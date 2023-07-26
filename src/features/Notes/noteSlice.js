@@ -62,7 +62,7 @@ const noteSlice = createSlice({
     }
   },
   extraReducers: {
-    [fetchNotes.pending]: () => {
+    [fetchNotes.pending]: (state, action) => {
       state.status = 'loading';
     },
     [fetchNotes.fulfilled]: (state, action) => {
