@@ -1,13 +1,23 @@
 "use client"
-import React from 'react';
+import React,{ useEffect } from 'react';
+import NoteDetails from '@/features/Notes/noteDetails';
+import { useDispatch } from 'react-redux';
+import { fetchNoteById } from '@/features/Notes/noteSlice';
 
+const Page = ({ params }:{ params:{ noteId: string }}) => {
+    const dispatch = useDispatch();
 
-const NoteDetails = ({ params }: { params: { noteId: string } }) => {
+    useEffect(() => {
+        dispatch(fetchNoteById(params.noteId));
+
+    }, [dispatch, params.noteId]);
+
     return (
         <div>
             Note Details: {params.noteId}
+            <NoteDetails />
         </div>
     );
 };
 
-export default NoteDetails;
+export default Page;
