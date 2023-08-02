@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import './register.scss';
 
@@ -93,7 +92,7 @@ const Register = () => {
           />
           {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
         </div>
-        <div className="button-container">
+        <div className="form-group">
           <button type="submit">Register</button>
         </div>
       </form>

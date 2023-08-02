@@ -1,17 +1,17 @@
 "use client"
-import Register from '@/features/Register/register';
+import Login from '@/features/Login/login';
 import RegisterLoginSwitcher from '@/common/loginRegisterSwitcher';
 import '@/common/styles/common.scss';
 
 const Page = () => {
   const switcher = {
-    content: 'Already have an account?',
-    buttonContent: 'Login',
-    link: '/login',
+    content: 'Don\'t have an account?',
+    buttonContent: 'Register',
+    link: '/register',
   };
   return (
     <div id='login-register-container'>
-      <Register />
+      <Login />
       <RegisterLoginSwitcher switcher={switcher} />
     </div>
   );
