@@ -12,44 +12,12 @@ const Register = () => {
   return (
     <div id="register">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            id="firstName"
-            {...register('firstName', { required: 'First Name is required' })}
-          />
-          {errors.firstName && <p className="error">{errors.firstName.message}</p>}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            {...register('lastName', { required: 'Last Name is required' })}
-          />
-          {errors.lastName && <p className="error">{errors.lastName.message}</p>}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            {...register('username', { required: 'Username is required' })}
-          />
-          {errors.username && <p className="error">{errors.username.message}</p>}
-        </div>
-
-        <div className="form-group">
+      <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
+            placeholder='Email'
             id="email"
             {...register('email', { required: 'Email is required',
             pattern: {
@@ -61,11 +29,50 @@ const Register = () => {
           {errors.email && <p className="error">{errors.email.message}</p>}
         </div>
 
+          <div className="fullname-container">
+            <div className="form-group fullname">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                placeholder='First Name'
+                id="firstName"
+                {...register('firstName', { required: 'First Name is required' })}
+              />
+              {errors.firstName && <p className="error">{errors.firstName.message}</p>}
+            </div>
+
+            <div className="form-group fullname">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                name="lastName"
+                placeholder='Last Name'
+                id="lastName"
+                {...register('lastName', { required: 'Last Name is required' })}
+              />
+              {errors.lastName && <p className="error">{errors.lastName.message}</p>}
+            </div>
+          </div>
+
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder='Username'
+            id="username"
+            {...register('username', { required: 'Username is required' })}
+          />
+          {errors.username && <p className="error">{errors.username.message}</p>}
+        </div>
+
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
+            placeholder='Password'
             id="password"
             {...register('password', { required: 'Password is required' })}
           />
@@ -77,6 +84,7 @@ const Register = () => {
           <input
             type="password"
             name="confirmPassword"
+            placeholder='Confirm Password'
             id="confirmPassword"
             {...register('confirmPassword', {
               required: 'Confirm Password is required',
@@ -85,8 +93,9 @@ const Register = () => {
           />
           {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
         </div>
-
-        <button type="submit">Register</button>
+        <div className="button-container">
+          <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   );

@@ -3,9 +3,10 @@
 import React from 'react';
 import Register from '@/features/Register/register';
 
+
 const Page = () => {
   return (
-    <div>
+    <div id='login-register-container'>
       <Register />
     </div>
   );
