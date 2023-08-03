@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useSelector  } from 'react-redux';
 import { getSelectAllNotes } from './noteSlice';
+import '@/common/styles/common.scss';
 
 const Notes = () => {
   const allNotes = useSelector(getSelectAllNotes);
@@ -9,10 +10,11 @@ const Notes = () => {
 
   renderedNotes = allNotes.status === "succeeded" ? (
     allNotes.notes.length > 0 && allNotes.notes.slice(0, 10).map(note => (
-      <div key={note.id}>
+      <div className='all-notes' key={note.id}>
         <Link href={`/notes/${note.id}`}>
             <h2>{note.title}</h2>
         </Link>
+        <hr />
       </div>
     ))
   ) : (
@@ -22,7 +24,7 @@ const Notes = () => {
   )
 
   return (
-    <div>
+    <div className='all-notes-container'>
       
       <h1>Notes</h1>
       {renderedNotes}
