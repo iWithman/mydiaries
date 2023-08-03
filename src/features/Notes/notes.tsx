@@ -8,13 +8,10 @@ const Notes = () => {
   let renderedNotes = null
 
   renderedNotes = allNotes.status === "succeeded" ? (
-    allNotes.notes.slice(0, 10).map(note => (
+    allNotes.notes.length > 0 && allNotes.notes.slice(0, 10).map(note => (
       <div key={note.id}>
         <Link href={`/notes/${note.id}`}>
-          <div>
             <h2>{note.title}</h2>
-            <p>{note.body.substring(0, 100)}</p>
-          </div>
         </Link>
       </div>
     ))
@@ -26,6 +23,7 @@ const Notes = () => {
 
   return (
     <div>
+      
       <h1>Notes</h1>
       {renderedNotes}
     </div>

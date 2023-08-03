@@ -13,10 +13,9 @@ const Page = ({ params }:{ params:{ noteId: string }}) => {
     }, [dispatch, params.noteId]);
 
     return (
-        <div>
-            Note Details: {params.noteId}
+        <>
             <NoteDetails />
-        </div>
+        </>
     );
 };
 

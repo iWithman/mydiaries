@@ -1,19 +1,60 @@
 "use client"
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-
+import { useEffect } from 'react';
 import { useSelector  } from 'react-redux';
-import { getSelectedNote } from './noteSlice';
+import { getSelectedNote, getSelectAllNotes } from './noteSlice';
+import { fetchNotes } from './noteSlice';
+import { useDispatch } from 'react-redux';
+import Link from 'next/link';
+import '@/common/styles/common.scss';
 
 const NoteDetails = () => {
   const { selectedNote } = useSelector(getSelectedNote);
+  const allNotes = useSelector(getSelectAllNotes);
+  const dispatch = useDispatch();
 
-  if(!selectedNote) return <div>Loading...</div>
+  useEffect(() => {
+    dispatch(fetchNotes())
+  }
+  , []);
+
+  const renderBottomLine = () => {
+    return (
+      <>
+        <hr className='hr' />
+      </>
+    )
+  }
+
+  let custStringAndAddDot = (str: string, len: number) => {
+    return str.length > len ? str.substring(0, len) + '...' : str
+  }
+
+  if(!selectedNote || !allNotes.notes) return <h1>Loading...</h1>
 
   return (
-    <div>
-      <h2>{selectedNote.title}</h2>
-      <p>{selectedNote.body}</p>
+    <div className='noteDetails'>
+      <div className='all-notes'>
+      {
+        allNotes.notes.length > 0 && allNotes.notes.slice(0, 10).map(note => (
+          <div key={note.id}>
+            <Link href={`/notes/${note.id}`}>
+                <p>{custStringAndAddDot(note.body, 10)}</p>
+            </Link>
+            {renderBottomLine()}
+          </div>
+        ))
+      }
+      </div>
+      <div className='note'>
+        {
+          selectedNote && (
+            <>
+              <h2>{selectedNote.title}</h2>
+              <p>{selectedNote.body}</p>
+            </>
+          )
+        }
+      </div>
     </div>
   );
 };
