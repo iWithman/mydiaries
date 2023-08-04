@@ -5,6 +5,7 @@ import { getSelectedNote, getSelectAllNotes } from './noteSlice';
 import { fetchNotes } from './noteSlice';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
+import NoteForm from '@/common/forms/noteForm';
 import '@/common/styles/common.scss';
 
 const NoteDetails = () => {
@@ -38,7 +39,8 @@ const NoteDetails = () => {
         allNotes.notes.length > 0 && allNotes.notes.slice(0, 10).map(note => (
           <div key={note.id}>
             <Link href={`/notes/${note.id}`}>
-                <p>{custStringAndAddDot(note.body, 10)}</p>
+                <h2>{custStringAndAddDot(note.title, 15)}</h2>
+                <p>{custStringAndAddDot(note.body, 15)}</p>
             </Link>
             {renderBottomLine()}
           </div>
@@ -46,14 +48,7 @@ const NoteDetails = () => {
       }
       </div>
       <div className='note'>
-        {
-          selectedNote && (
-            <>
-              <h2>{selectedNote.title}</h2>
-              <p>{selectedNote.body}</p>
-            </>
-          )
-        }
+        <NoteForm selectedNote={selectedNote} />
       </div>
     </div>
   );

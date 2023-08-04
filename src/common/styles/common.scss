@@ -43,16 +43,11 @@
   width: 100%;
   height: 100%;
   
-  
   .note {
     background-color: #57C4B5;
-    
+    flex: 4;
     padding: 0 10px;
-    h2 {
-      padding: 0;
-    }
   }
-  
 }
 
 .all-notes-container {
@@ -65,9 +60,16 @@
 
 .all-notes {
   background-color: #5F8580;
-  
-  font-size: 10px;
+  flex: 1;
+  font-size: 12px;
+  h2 {
+    margin: 0;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
   p {
+    margin: 0;
     padding: 10px;
   }
   
@@ -79,4 +81,25 @@
   .hr {
     border: 1px solid #57C4B5;
   }
+}
+
+.inputPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.inputField {
+  width: 100%;
+  height: 100vh;
+  background-color: inherit;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  resize: none;
 }
