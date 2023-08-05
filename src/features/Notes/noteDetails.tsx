@@ -48,6 +48,11 @@ const NoteDetails = () => {
       }
       </div>
       <div className='note'>
+        <div className='backButton-container'>
+          <Link className='backButton' href={`/notes`}>
+          {'<- Back'}
+          </Link>
+        </div>
         <NoteForm selectedNote={selectedNote} />
       </div>
     </div>

@@ -44,15 +44,28 @@
   height: 100%;
   
   .note {
+    position: relative;
     background-color: #57C4B5;
     flex: 4;
     padding: 0 10px;
+    .backButton-container {
+      margin-bottom: 30px;
+      .backButton {
+        text-decoration: none;
+          background-color: #5F8580;
+          color: #fff;
+          padding: 0 10px;
+          position: absolute;
+          left: 0;
+      }
+    }
   }
 }
 
 .all-notes-container {
   background-color: #5F8580;
   padding: 10px;
+  height: 100vh;
   .hr {
     border: 1px solid #fff;
   }
@@ -98,8 +111,9 @@
   height: 100vh;
   background-color: inherit;
   font-size: 18px;
-  padding: 10px;
   border: none;
   outline: none;
   resize: none;
 }
+
+
