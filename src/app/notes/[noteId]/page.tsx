@@ -14,7 +14,7 @@ const Page = ({ params }:{ params:{ noteId: string }}) => {
 
     return (
         <>
-            <NoteDetails />
+            <NoteDetails params={params} />
         </>
     );
 };

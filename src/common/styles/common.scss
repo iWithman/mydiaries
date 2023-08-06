@@ -69,6 +69,16 @@
   .hr {
     border: 1px solid #fff;
   }
+
+  .add-note-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add-note-icon {
+    font-size: 30px;
+    color: #000;
+  }
 }
 
 .all-notes {

@@ -1,15 +1,14 @@
 "use client"
 import { useEffect } from 'react';
 import { useSelector  } from 'react-redux';
-import { getSelectedNote, getSelectAllNotes } from './noteSlice';
+import { getSelectAllNotes } from './noteSlice';
 import { fetchNotes } from './noteSlice';
 import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 import NoteForm from '@/common/forms/noteForm';
 import '@/common/styles/common.scss';
 
-const NoteDetails = () => {
-  const { selectedNote } = useSelector(getSelectedNote);
+const NoteDetails = ({ params }) => {
   const allNotes = useSelector(getSelectAllNotes);
   const dispatch = useDispatch();
 
@@ -30,7 +29,7 @@ const NoteDetails = () => {
     return str.length > len ? str.substring(0, len) + '...' : str
   }
 
-  if(!selectedNote || !allNotes.notes) return <h1>Loading...</h1>
+  if(!allNotes.notes) return <h1>Loading...</h1>
 
   return (
     <div className='noteDetails'>
@@ -53,7 +52,7 @@ const NoteDetails = () => {
           {'<- Back'}
           </Link>
         </div>
-        <NoteForm selectedNote={selectedNote} />
+        <NoteForm params={params} />
       </div>
     </div>
   );

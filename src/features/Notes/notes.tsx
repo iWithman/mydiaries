@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useSelector  } from 'react-redux';
 import { getSelectAllNotes } from './noteSlice';
 import '@/common/styles/common.scss';
+import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 
 const Notes = () => {
   const allNotes = useSelector(getSelectAllNotes);
@@ -26,7 +27,12 @@ const Notes = () => {
   return (
     <div className='all-notes-container'>
       
-      <h1>Notes</h1>
+      <div className='add-note-icon-container'>
+        <h1>Notes</h1>
+        <Link href={`/notes/new`}>
+          <AddBoxRoundedIcon className='add-note-icon' />
+        </Link>
+      </div>
       {renderedNotes}
     </div>
   );

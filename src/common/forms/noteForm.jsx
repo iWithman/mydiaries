@@ -1,4 +1,20 @@
-const NoteForm = ({ selectedNote: {title, body}}) => {
+import { useEffect, useState } from "react";
+import { getSelectedNote } from "@/features/Notes/noteSlice";
+import { useSelector } from "react-redux";
+
+const NoteForm = ({ params: { noteId } }) => {
+  const [note, setNote] = useState({title: '', body: ''});
+  const { selectedNote } = useSelector(getSelectedNote);
+
+  useEffect(() => {
+    if(noteId === 'new') return;
+
+    if(!selectedNote) return <div>Note not found</div>
+
+    if(selectedNote) {
+      setNote(selectedNote)
+    }
+  }, [selectedNote])
 
   return (
     <>
@@ -7,9 +23,9 @@ const NoteForm = ({ selectedNote: {title, body}}) => {
         className='inputField'
         placeholder="Type your note here..."
       >
-        <b>{title}</b>
+        <b>{note.title}</b>
         <br />
-        <div>{body}</div>
+        <div>{note.body}</div>
       </div>
     </>
   );
