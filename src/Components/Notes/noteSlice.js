@@ -1,6 +1,5 @@
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
-import notesApi from '../../common/api/notesApi';
-
+import notesApi from '../../Common/Api/notesApi';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const fetchNotes = createAsyncThunk('notes/fetchNotes', async () => {
   try {
     const response = await notesApi.get('/posts');
@@ -69,7 +68,7 @@ const noteSlice = createSlice({
       state.status = 'succeeded';
       state.notes = {...state, notes: action.payload }
     },
-    [fetchNotes.rejected]: () => {
+    [fetchNotes.rejected]: (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
     },

@@ -1,15 +1,25 @@
 import { useForm } from 'react-hook-form';
+import RegisterLoginSwitcher from '../../Common/registerLoginSwitcher';
+import { useNavigate } from "react-router-dom";
 import './register.scss';
 
 const Register = () => {
   const { register, handleSubmit, formState:{errors}, watch } = useForm();
+
+  const navigate = useNavigate();
+
+  const switcher = {
+    content: 'Already have an account?',
+    buttonContent: 'Login',
+    link: navigate('/login')
+  };
 
   const onSubmit = (data) => {
     console.log(data);
   };
 
   return (
-    <div id="register">
+    <div id="register" className='login-register-container'>
       <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -96,6 +106,7 @@ const Register = () => {
           <button type="submit">Register</button>
         </div>
       </form>
+      <RegisterLoginSwitcher switcher={switcher} />
     </div>
   );
 };

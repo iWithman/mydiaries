@@ -1,24 +1,31 @@
-import { useEffect, useState } from "react";
-import { getSelectedNote } from "@/features/Notes/noteSlice";
+import { useEffect, useState, useRef } from "react";
+import { getSelectedNote } from "../../Components/Notes/noteSlice";
 import { useSelector } from "react-redux";
 
 const NoteForm = ({ params: { noteId } }) => {
   const [note, setNote] = useState({title: '', body: ''});
   const { selectedNote } = useSelector(getSelectedNote);
 
-  useEffect(() => {
-    if(noteId === 'new') return;
+  const inputRef = useRef(null);
 
-    if(!selectedNote) return <div>Note not found</div>
+  useEffect(() => {
+    if(noteId === 'new') {
+      inputRef.current.focus();
+      return
+    };
+
+    if(!selectedNote) return 
 
     if(selectedNote) {
       setNote(selectedNote)
     }
-  }, [selectedNote])
+  }, [selectedNote, noteId])
+
 
   return (
     <>
      <div 
+        ref={inputRef}
         contentEditable
         className='inputField'
         placeholder="Type your note here..."

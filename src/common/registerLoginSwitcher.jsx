@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import '@/common/styles/common.scss'
-
+import { Link } from 'react-router-dom';
+import '../Common/Styles/common.scss'
 
 const RegisterLoginSwitcher = ({ switcher }) => {
     return (
@@ -11,7 +10,7 @@ const RegisterLoginSwitcher = ({ switcher }) => {
         <Link href={switcher.link}>
           <button>
             {switcher.buttonContent}
-            </button>
+          </button>
         </Link>
       </div>
     );

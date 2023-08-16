@@ -1,21 +1,20 @@
-"use client"
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector  } from 'react-redux';
-import { getSelectAllNotes } from './noteSlice';
-import { fetchNotes } from './noteSlice';
+import { fetchNotes, getSelectAllNotes, fetchNoteById } from './noteSlice';
 import { useDispatch } from 'react-redux';
-import Link from 'next/link';
-import NoteForm from '@/common/forms/noteForm';
-import '@/common/styles/common.scss';
+import { Link, useParams } from 'react-router-dom';
+import NoteForm from '../../Common/Forms/noteForm';
+import '../../Common/Styles/common.scss'
 
-const NoteDetails = ({ params }) => {
+const NoteDetails = () => {
+  const params = useParams();
   const allNotes = useSelector(getSelectAllNotes);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchNotes())
-  }
-  , []);
+    dispatch(fetchNoteById(params.noteId))
+  }, [dispatch, params.noteId]);
 
   const renderBottomLine = () => {
     return (
@@ -25,7 +24,7 @@ const NoteDetails = ({ params }) => {
     )
   }
 
-  let custStringAndAddDot = (str: string, len: number) => {
+  let custStringAndAddDot = (str, len) => {
     return str.length > len ? str.substring(0, len) + '...' : str
   }
 
@@ -37,7 +36,7 @@ const NoteDetails = ({ params }) => {
       {
         allNotes.notes.length > 0 && allNotes.notes.slice(0, 10).map(note => (
           <div key={note.id}>
-            <Link href={`/notes/${note.id}`}>
+            <Link to={`/notes/${note.id}`}>
                 <h2>{custStringAndAddDot(note.title, 15)}</h2>
                 <p>{custStringAndAddDot(note.body, 15)}</p>
             </Link>
@@ -48,7 +47,7 @@ const NoteDetails = ({ params }) => {
       </div>
       <div className='note'>
         <div className='backButton-container'>
-          <Link className='backButton' href={`/notes`}>
+          <Link className='backButton' to={`/notes`}>
           {'<- Back'}
           </Link>
         </div>
