@@ -1,4 +1,4 @@
-import { store } from "./store";
+import { store } from "./entities";
 import { Provider } from "react-redux";
 
 export const StoreProvider = ({ children }) => (

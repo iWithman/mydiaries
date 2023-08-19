@@ -1,5 +1,5 @@
 import { useSelector  } from 'react-redux';
-import { getSelectAllNotes } from './noteSlice';
+import { getSelectAllNotes } from '../../store/notes/note.store';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import {Link} from 'react-router-dom'
 import '../../Common/Styles/common.scss';

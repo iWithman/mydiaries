@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector  } from 'react-redux';
-import { fetchNotes, getSelectAllNotes, fetchNoteById } from './noteSlice';
+import { fetchNotes, getSelectAllNotes, fetchNoteById } from '../../store/notes/note.store';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import NoteForm from '../../Common/Forms/noteForm';

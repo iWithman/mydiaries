@@ -6,7 +6,7 @@ import Login from './Components/Login/login';
 import  Notes  from './Components/Notes/notes';
 import NoteDetails from './Components/Notes/noteDetails';
 
-import { fetchNotes } from './Components/Notes/noteSlice';
+import { fetchNotes } from './store/notes/note.store';
 import { useDispatch } from 'react-redux';
 
 import './App.css';

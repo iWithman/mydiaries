@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { getSelectedNote } from "../../Components/Notes/noteSlice";
+import { getSelectedNote } from "../../store/notes/note.store";
 import { useSelector } from "react-redux";
 
 const NoteForm = ({ params: { noteId } }) => {
