@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import '../Common/Styles/common.scss'
 
-const RegisterLoginSwitcher = ({ switcher }) => {
+const SignupSignInSwticher = ({ switcher }) => {
     return (
-      <div className="register-login-switcher">
+      <div className="signupSignInSwticher">
         <div className='content'>
           <p>{switcher.content}</p>
         </div>
@@ -16,4 +16,4 @@ const RegisterLoginSwitcher = ({ switcher }) => {
     );
   };
 
-export default RegisterLoginSwitcher;
+export default SignupSignInSwticher;

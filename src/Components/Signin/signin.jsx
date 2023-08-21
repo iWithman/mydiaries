@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import RegisterLoginSwitcher from "../../Common/registerLoginSwitcher";
+import SignupSigninSwitcher from "../../Common/signupSigninSwitcher";
 import { useNavigate } from "react-router-dom";
 
-import "./login.scss";
+import "./signin.scss";
 
-const Login = () => {
+const Signin = () => {
   const {
     register,
     handleSubmit,
@@ -16,8 +16,8 @@ const Login = () => {
 
   const switcher = {
     content: 'Don\'t have an account?',
-    buttonContent: 'Register',
-    link: navigate('/register')
+    buttonContent: 'Sign Up',
+    link: navigate('/signup')
   };
 
   const onSubmit = (data) => {
@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div id="login" className="login-register-container">
+    <div id="signin" className="signin-signup-container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
@@ -55,12 +55,12 @@ const Login = () => {
           )}
         </div>
         <div className="form-group">
-          <button type="submit">Login</button>
+          <button type="submit">Signin</button>
         </div>
       </form>
-      <RegisterLoginSwitcher switcher={switcher} />
+      <SignupSigninSwitcher switcher={switcher} />
     </div>
   );
 };
 
-export default Login;
+export default Signin;

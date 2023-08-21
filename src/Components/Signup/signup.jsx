@@ -1,17 +1,18 @@
 import { useForm } from 'react-hook-form';
-import RegisterLoginSwitcher from '../../Common/registerLoginSwitcher';
+import SignupSigninSwitcher from "../../Common/signupSigninSwitcher";
 import { useNavigate } from "react-router-dom";
-import './register.scss';
 
-const Register = () => {
+import './signup.scss';
+
+const Signup = () => {
   const { register, handleSubmit, formState:{errors}, watch } = useForm();
 
   const navigate = useNavigate();
 
   const switcher = {
     content: 'Already have an account?',
-    buttonContent: 'Login',
-    link: navigate('/login')
+    buttonContent: 'Sign In',
+    link: navigate('/signin')
   };
 
   const onSubmit = (data) => {
@@ -19,7 +20,7 @@ const Register = () => {
   };
 
   return (
-    <div id="register" className='login-register-container'>
+    <div id="signup" className='signin-signup-container'>
       <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -103,13 +104,13 @@ const Register = () => {
           {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
         </div>
         <div className="form-group">
-          <button type="submit">Register</button>
+          <button type="submit">Sign Up</button>
         </div>
       </form>
-      <RegisterLoginSwitcher switcher={switcher} />
+      <SignupSigninSwitcher switcher={switcher} />
     </div>
   );
 };
 
-export default Register;
+export default Signup;
 
